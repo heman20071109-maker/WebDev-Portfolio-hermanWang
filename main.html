@@ -1,23 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Fun with Formatting in HTML!</title>
-        <link rel="stylesheet" href="styles/style.css">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Herman's Portfolio</title>
+        <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
         <div class="container">
-            <h1>Fun with Formatting in HTML!</h1>
+            <h1 id="main-title">Welcome to My Portfolio</h1>
             
-            <p><b>Bold text</b> is often used for <u>emphasis</u>. It's important to note that <i>italic</i> text can add a subtle touch to your writing. Using <mark>marked text</mark> highlights key points, making them stand out.</p>
+            <section class="intro">
+                <h2>About Me</h2>
+                <p>Hi, I'm <strong>Herman Wang</strong>! Welcome to my personal web developer portfolio.</p>
+                <p>I am currently learning web development using <i>VS Code for Education</i>. I enjoy solving problems and I love building interactive, beautiful websites. My goal is to become a skilled frontend developer.</p>
+            </section>
             
             <hr>
             
-            <p>As you continue reading, you'll notice that combining these elements creates a visually engaging experience. Remember, the key to good formatting is to use these features <u>sparingly</u>, and meaningfully. Occasionally, <ins>appropriately</ins> using these tags ensures the content remains clear and effective.</p>
-            
-            <div class="image-box">
-                <img src="images/1.jpg" alt="A descriptive image for my project">
+            <section class="gallery">
+                <h2>My Gallery</h2>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="images/1.jpg" alt="My Profile Picture" id="img1">
+                        <p>Me!</p>
+                    </div>
+                    <div class="image-card">
+                        <img src="images/2.jpg" alt="My Coding Setup" id="img2">
+                        <p>My Setup</p>
+                    </div>
+                    <div class="image-card">
+                        <img src="images/3.jpg" alt="My Hobby" id="img3">
+                        <p>My Hobby</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="button-container">
+                <button id="magicButton">Say Hello!</button>
             </div>
         </div>
+
+        <script src="scripts/script.js"></script>
     </body>
 </html>
