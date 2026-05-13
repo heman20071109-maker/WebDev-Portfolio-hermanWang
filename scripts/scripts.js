@@ -6,7 +6,6 @@ btn.addEventListener("click", () => {
     btn.innerText = "Welcome!";
 });
 
-
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
         const title = card.querySelector('h3').innerText;
