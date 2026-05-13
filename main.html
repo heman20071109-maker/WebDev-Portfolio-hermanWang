@@ -3,42 +3,53 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Herman's Portfolio</title>
+        <title>Herman Wang | Portfolio</title>
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
         <div class="container">
-            <h1 id="main-title">Welcome to My Portfolio</h1>
+            <header>
+                <h1 id="main-title">Herman Wang</h1>
+                <p class="subtitle">Student Developer & Ice Hockey Captain</p>
+            </header>
             
-            <section class="intro">
+            <section class="about">
                 <h2>About Me</h2>
-                <p>Hi, I'm <strong>Herman Wang</strong>! Welcome to my personal web developer portfolio.</p>
-                <p>I am currently learning web development using <i>VS Code for Education</i>. I enjoy solving problems and I love building interactive, beautiful websites. My goal is to become a skilled frontend developer.</p>
+                <p>I am a Grade 12 student at <strong>Shanghai Nanyang Model High School</strong>. I have a strong passion for <i>C++ programming</i> and <i>advanced mathematics</i>. When I'm not coding, you can find me on the ice leading my team as captain.</p>
             </section>
             
             <hr>
             
-            <section class="gallery">
-                <h2>My Gallery</h2>
-                <div class="image-grid">
-                    <div class="image-card">
-                        <img src="images/1.jpg" alt="My Profile Picture" id="img1">
-                        <p>Me!</p>
+            <section class="projects">
+                <h2>My Highlights</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="images/1.jpg" alt="Herman on the Ice" id="img1">
+                        </div>
+                        <h3>Athletics</h3>
+                        <p>Ice Hockey Captain</p>
                     </div>
-                    <div class="image-card">
-                        <img src="images/2.jpg" alt="My Coding Setup" id="img2">
-                        <p>My Setup</p>
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="images/2.jpg" alt="Coding Projects" id="img2">
+                        </div>
+                        <h3>Development</h3>
+                        <p>C++ & Web Dev</p>
                     </div>
-                    <div class="image-card">
-                        <img src="images/3.jpg" alt="My Hobby" id="img3">
-                        <p>My Hobby</p>
+                    <div class="card">
+                        <div class="image-container">
+                            <img src="images/3.jpg" alt="Academic Achievements" id="img3">
+                        </div>
+                        <h3>Academics</h3>
+                        <p>Math Competition</p>
                     </div>
                 </div>
             </section>
 
-            <div class="button-container">
+            <footer>
                 <button id="magicButton">Say Hello!</button>
-            </div>
+            </footer>
         </div>
 
         <script src="scripts/script.js"></script>
