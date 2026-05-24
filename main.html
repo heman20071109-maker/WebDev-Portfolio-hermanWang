@@ -7,21 +7,23 @@
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
+        <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+
         <div class="container">
             <header>
                 <h1 id="main-title">Herman Wang</h1>
-                <p class="subtitle">Student</p>
+                <p class="subtitle">Student & Web Developer</p>
             </header>
             
             <section class="about">
                 <h2>About Me</h2>
-                <p>Hi, I'm Herman Wang, a student with a passion for web development and ice hockey.</p>
+                <p>Hi, I'm Herman Wang, a student with a passion for web development and ice hockey. I love building interactive web experiences and enjoying the thrill of the ice rink.</p>
             </section>
             
             <hr>
             
             <section class="projects">
-                <h2>showcase</h2>
+                <h2>Showcase</h2>
                 <div class="card-grid">
                     <div class="card">
                         <div class="image-container">
@@ -32,24 +34,30 @@
                     </div>
                     <div class="card">
                         <div class="image-container">
-                            <img src="images/3.jpg" alt="Coding Projects" id="img2">
+                            <img src="images/3.jpg" alt="Shanghai Port Champions" id="img2">
                         </div>
-                        <h3>favorite team</h3>
-                        <p>shanghai port</p>
+                        <h3>Favorite Team</h3>
+                        <p>Shanghai Port</p>
                     </div>
                     <div class="card">
                         <div class="image-container">
-                            <img src="images/2.png" alt="Academic Achievements" id="img3">
+                            <img src="images/2.png" alt="Horizon Game Logo" id="img3">
                         </div>
-                        <h3>favorite game</h3>
-                        <p>horizon</p>
+                        <h3>Favorite Game</h3>
+                        <p>Horizon</p>
                     </div>
                 </div>
             </section>
 
             <footer>
-                <button id="magicButton">Say Hello!</button>
+                <button id="magicButton" class="primary-btn">Say Hello!</button>
             </footer>
+        </div>
+
+        <div id="imageModal" class="modal">
+            <span class="close-btn">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div id="modalCaption"></div>
         </div>
 
         <script src="scripts/script.js"></script>
