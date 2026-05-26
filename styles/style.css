@@ -1,4 +1,4 @@
-/* --- 1. CSS 变量与主题颜色管理 --- */
+/* --- 1. CSS Variables for Theme Colors --- */
 :root {
     --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     --container-bg: #ffffff;
@@ -10,7 +10,7 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* 深色模式变量 */
+/* Dark mode variables */
 body.dark-mode {
     --bg-gradient: linear-gradient(135deg, #1e1e2f 0%, #151520 100%);
     --container-bg: #2a2a40;
@@ -22,7 +22,7 @@ body.dark-mode {
     --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
-/* --- 2. 基础排版与重置 --- */
+/* --- 2. Basic Typography & Reset --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg-gradient);
@@ -30,10 +30,10 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    transition: background 0.5s ease, color 0.5s ease; /* 主题切换平滑过渡 */
+    transition: background 0.5s ease, color 0.5s ease; 
 }
 
-/* 悬浮的主题切换按钮 */
+/* Floating theme toggle button */
 .theme-btn {
     position: fixed;
     top: 20px;
@@ -88,7 +88,7 @@ hr {
     margin: 40px 0;
 }
 
-/* --- 3. 响应式卡片网格布局 --- */
+/* --- 3. Responsive Card Grid Layout --- */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -103,7 +103,7 @@ hr {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     text-align: center;
     border: 1px solid var(--card-border);
-    cursor: pointer; /* 提示可点击 */
+    cursor: pointer; /* Show pointer to indicate it's clickable */
 }
 
 .card:hover {
@@ -140,10 +140,17 @@ hr {
     margin-bottom: 20px;
 }
 
-/* --- 4. 按钮交互 --- */
+/* --- 4. Footer & Button Interactions --- */
 footer {
     text-align: center;
     margin-top: 60px;
+    /* Very important! Used as a reference for absolute positioning of child elements */
+    position: relative; 
+    /* Give the footer a base height */
+    min-height: 60px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .primary-btn {
@@ -165,16 +172,42 @@ footer {
     box-shadow: 0 15px 25px rgba(9, 132, 227, 0.4);
 }
 
-/* --- 5. 图片模态框 (Lightbox) 样式 --- */
+/* --- 5. BGM Toggle Button Styles --- */
+.bgm-btn {
+    position: absolute;
+    left: 0;        /* Pin to the far left of the footer */
+    bottom: 5px;    /* Move slightly down */
+    background: var(--container-bg);
+    border: 2px solid var(--card-border);
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bgm-btn:hover {
+    /* Slight scale and tilt on hover for a dynamic feel */
+    transform: scale(1.15) rotate(-10deg); 
+    border-color: var(--primary-color);
+}
+
+/* --- 6. Image Modal (Lightbox) Styles --- */
 .modal {
-    display: none; /* 默认隐藏 */
+    display: none; /* Hidden by default */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* 半透明黑底 */
+    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black background */
     backdrop-filter: blur(5px);
 }
 
@@ -186,7 +219,7 @@ footer {
     margin-top: 5vh;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    animation: zoomIn 0.3s ease; /* 放大动画 */
+    animation: zoomIn 0.3s ease; /* Zoom-in animation */
 }
 
 #modalCaption {
