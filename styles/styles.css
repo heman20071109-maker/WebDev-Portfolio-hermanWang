@@ -1,6 +1,5 @@
 /* --- 1. CSS Variables for 3 Theme Colors --- */
 :root {
-    /* 1. Light Mode (Default) - Using 6.png as requested */
     --body-bg: linear-gradient(rgba(245, 247, 250, 0.85), rgba(195, 207, 226, 0.85)), url('../images/6.png');
     --container-bg: #ffffff;
     --text-color: #2d3436;
@@ -11,7 +10,6 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* 2. Dark Mode */
 body.dark-mode {
     --body-bg: linear-gradient(rgba(30, 30, 47, 0.9), rgba(21, 21, 32, 0.9)), url('../images/6.png');
     --container-bg: #2a2a40;
@@ -23,13 +21,12 @@ body.dark-mode {
     --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
-/* 3. Colorblind / High Contrast Mode (Requirement Met) */
 body.colorblind-mode {
     --body-bg: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('../images/6.png');
     --container-bg: #000000;
-    --text-color: #ffff00; /* High contrast yellow */
+    --text-color: #ffff00;
     --text-muted: #ffcc00;
-    --primary-color: #00ffff; /* High contrast cyan */
+    --primary-color: #00ffff;
     --primary-hover: #ffffff;
     --card-border: #ffff00;
     --shadow-color: rgba(255, 255, 0, 0.3);
@@ -41,7 +38,7 @@ body {
     background: var(--body-bg);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Makes the background image stay in place while scrolling */
+    background-attachment: fixed;
     color: var(--text-color);
     margin: 0;
     padding: 0;
@@ -136,6 +133,7 @@ hr { border: 0; height: 1px; background: var(--card-border); margin: 40px 0; }
 
 .image-container img, .image-container video {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+    cursor: pointer;
 }
 
 .card:hover img, .card:hover video { transform: scale(1.15); }
@@ -171,14 +169,14 @@ footer {
 
 .bgm-btn:hover { transform: scale(1.15) rotate(-10deg); border-color: var(--primary-color); }
 
-/* --- 7. Image Modal (Lightbox) Styles --- */
+/* --- 7. Image/Video Modal (Lightbox) Styles --- */
 .modal {
     display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
 }
 .modal-content {
     margin: auto; display: block; max-width: 80%; max-height: 80vh; margin-top: 5vh;
-    border-radius: 10px; animation: zoomIn 0.3s ease; 
+    border-radius: 10px; animation: zoomIn 0.3s ease; outline: none;
 }
 #modalCaption {
     margin: auto; display: block; width: 80%; text-align: center; color: #ccc;
@@ -190,15 +188,3 @@ footer {
 }
 .close-btn:hover { color: #ff4757; }
 @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-
-/* --- 8. Advanced Scroll Animations (Intersection Observer 配合样式) --- */
-.hidden-fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.hidden-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-}

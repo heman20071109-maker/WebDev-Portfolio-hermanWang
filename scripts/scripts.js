@@ -9,10 +9,11 @@ if (btn) {
     });
 }
 
-// --- 2. Advanced 3-Way Theme Toggle Logic ---
+// --- 2. 3-Way Theme Toggle Logic ---
 const themeToggle = document.getElementById("themeToggle");
 const themes = ['light', 'dark', 'colorblind'];
 
+// Safely get theme from the URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 let currentTheme = urlParams.get('theme') || 'light';
 
@@ -28,6 +29,7 @@ function applyTheme(theme) {
         if (themeToggle) themeToggle.innerText = "🌙 Dark Mode";
     }
 
+    // Keep the theme state when clicking nav links
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         let baseHref = link.getAttribute('href').split('?')[0]; 
@@ -52,7 +54,8 @@ if (themeToggle) {
     });
 }
 
-// --- 3. Advanced Media Modal (Lightbox) Logic (升级版：支持图片与视频) ---
+// --- 3. Image and Video Modal (Lightbox) Logic ---
+// 这里的代码改成了简单易懂的 if/else 逻辑
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImage");
 const modalVideo = document.getElementById("modalVideo");
@@ -60,20 +63,22 @@ const captionText = document.getElementById("modalCaption");
 const closeBtn = document.querySelector(".close-btn");
 
 if (modal && modalImg && modalVideo && captionText && closeBtn) {
-    // 监听所有卡片中的图片和视频
-    document.querySelectorAll(".card img, .card video").forEach(media => {
-        media.addEventListener("click", (e) => {
+    // Select both images and videos
+    let mediaElements = document.querySelectorAll(".card img, .card video");
+    
+    for (let i = 0; i < mediaElements.length; i++) {
+        mediaElements[i].addEventListener("click", function(e) {
             modal.style.display = "block";
             
-            if (e.target.tagName.toLowerCase() === 'video') {
-                // 如果点击的是视频
+            // Check if the clicked element is a video
+            if (e.target.tagName === 'VIDEO') {
                 modalImg.style.display = "none";
                 modalVideo.style.display = "block";
                 modalVideo.src = e.target.src;
                 modalVideo.play();
-                captionText.innerHTML = e.target.getAttribute("aria-label") || "Video Media";
+                captionText.innerHTML = "Horizon Gameplay";
             } else {
-                // 如果点击的是图片
+                // If it is an image
                 modalVideo.style.display = "none";
                 modalVideo.pause();
                 modalImg.style.display = "block";
@@ -81,17 +86,17 @@ if (modal && modalImg && modalVideo && captionText && closeBtn) {
                 captionText.innerHTML = e.target.alt;
             }
         });
-    });
+    }
 
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
-        modalVideo.pause(); // 关闭时暂停视频
+        modalVideo.pause(); // Pause video when closing
     });
 
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.style.display = "none";
-            modalVideo.pause(); // 点击背景关闭时暂停视频
+            modalVideo.pause();
         }
     });
 }
@@ -111,25 +116,3 @@ if (bgmMusic && bgmToggleBtn) {
         }
     });
 }
-
-// --- 5. Intersection Observer API (拔高点：实现滚动渐现高级动画) ---
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // 动画只触发一次，优化性能
-        }
-    });
-}, observerOptions);
-
-// 动态为 section 和 card 添加初始隐藏类
-document.querySelectorAll('section, .card').forEach(el => {
-    el.classList.add('hidden-fade');
-    observer.observe(el);
-});
