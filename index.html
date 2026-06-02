@@ -41,7 +41,7 @@
                             <h3>Favorite Team</h3><p>Shanghai Port</p>
                         </div>
                         <div class="card">
-                            <div class="image-container"><video src="images/2.mp4" autoplay loop muted playsinline id="vid1"></video></div>
+                            <div class="image-container"><video src="images/4.mp4" autoplay loop muted playsinline id="vid1" aria-label="Gameplay video of Horizon"></video></div>
                             <h3>Favorite Game</h3><p>Horizon</p>
                         </div>
                         <div class="card">
@@ -66,7 +66,7 @@
                 <hr>
                 <section class="about">
                     <h2>Accessibility Statement</h2>
-                    <p>This website prioritizes web accessibility (a11y). I implemented full semantic HTML5 tags (nav, main, section) to assist screen readers. All media elements have descriptive <code>alt</code> text. Most importantly, I engineered a three-color-scheme system featuring a high-contrast <strong>Colorblind Mode</strong> (yellow/cyan on black) to assist visually impaired users, alongside a Dark Mode to reduce eye strain.</p>
+                    <p>This website prioritizes web accessibility (a11y). I implemented full semantic HTML5 tags (nav, main, section) to assist screen readers. All media elements have descriptive <code>alt</code> and <code>aria-label</code> tags. Most importantly, I engineered a three-color-scheme system featuring a high-contrast <strong>Colorblind Mode</strong> (yellow/cyan on black) to assist visually impaired users, alongside a Dark Mode to reduce eye strain.</p>
                 </section>
             </main>
 
@@ -80,6 +80,7 @@
         <div id="imageModal" class="modal">
             <span class="close-btn">&times;</span>
             <img class="modal-content" id="modalImage">
+            <video class="modal-content" id="modalVideo" autoplay loop muted playsinline style="display: none;"></video>
             <div id="modalCaption"></div>
         </div>
 

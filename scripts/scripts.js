@@ -9,16 +9,15 @@ if (btn) {
     });
 }
 
-// --- 2. Advanced 3-Way Theme Toggle Logic (100% PROTOCOL RESTRICTION FREE) ---
+// --- 2. Advanced 3-Way Theme Toggle Logic ---
 const themeToggle = document.getElementById("themeToggle");
 const themes = ['light', 'dark', 'colorblind'];
 
-// Safely get theme from the URL parameters instead of restricted localStorage
 const urlParams = new URLSearchParams(window.location.search);
 let currentTheme = urlParams.get('theme') || 'light';
 
 function applyTheme(theme) {
-    document.body.className = ''; // Reset all classes
+    document.body.className = ''; 
     if (theme === 'dark') {
         document.body.classList.add('dark-mode');
         if (themeToggle) themeToggle.innerText = "👁️ Colorblind Mode";
@@ -29,15 +28,13 @@ function applyTheme(theme) {
         if (themeToggle) themeToggle.innerText = "🌙 Dark Mode";
     }
 
-    // Dynamically inject the theme into all navigation links so state passes between pages!
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-        let baseHref = link.getAttribute('href').split('?')[0]; // Strip old params
+        let baseHref = link.getAttribute('href').split('?')[0]; 
         link.setAttribute('href', baseHref + '?theme=' + theme);
     });
 }
 
-// Immediately apply theme state on load
 applyTheme(currentTheme);
 
 if (themeToggle) {
@@ -48,38 +45,53 @@ if (themeToggle) {
         
         applyTheme(currentTheme);
 
-        // Update the browser URL bar silently without reloading the page
         try {
             let newUrl = window.location.pathname + '?theme=' + currentTheme;
             window.history.replaceState(null, '', newUrl);
-        } catch (error) {
-            // Silently catch in extremely strict old browsers, the links will still work anyway
-        }
+        } catch (error) {}
     });
 }
 
-// --- 3. Image Modal (Lightbox) Logic ---
+// --- 3. Advanced Media Modal (Lightbox) Logic (升级版：支持图片与视频) ---
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImage");
+const modalVideo = document.getElementById("modalVideo");
 const captionText = document.getElementById("modalCaption");
 const closeBtn = document.querySelector(".close-btn");
 
-if (modal && modalImg && captionText && closeBtn) {
-    document.querySelectorAll(".card img").forEach(img => {
-        img.addEventListener("click", (e) => {
+if (modal && modalImg && modalVideo && captionText && closeBtn) {
+    // 监听所有卡片中的图片和视频
+    document.querySelectorAll(".card img, .card video").forEach(media => {
+        media.addEventListener("click", (e) => {
             modal.style.display = "block";
-            modalImg.src = e.target.src;
-            captionText.innerHTML = e.target.alt;
+            
+            if (e.target.tagName.toLowerCase() === 'video') {
+                // 如果点击的是视频
+                modalImg.style.display = "none";
+                modalVideo.style.display = "block";
+                modalVideo.src = e.target.src;
+                modalVideo.play();
+                captionText.innerHTML = e.target.getAttribute("aria-label") || "Video Media";
+            } else {
+                // 如果点击的是图片
+                modalVideo.style.display = "none";
+                modalVideo.pause();
+                modalImg.style.display = "block";
+                modalImg.src = e.target.src;
+                captionText.innerHTML = e.target.alt;
+            }
         });
     });
 
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
+        modalVideo.pause(); // 关闭时暂停视频
     });
 
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.style.display = "none";
+            modalVideo.pause(); // 点击背景关闭时暂停视频
         }
     });
 }
@@ -99,3 +111,25 @@ if (bgmMusic && bgmToggleBtn) {
         }
     });
 }
+
+// --- 5. Intersection Observer API (拔高点：实现滚动渐现高级动画) ---
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // 动画只触发一次，优化性能
+        }
+    });
+}, observerOptions);
+
+// 动态为 section 和 card 添加初始隐藏类
+document.querySelectorAll('section, .card').forEach(el => {
+    el.classList.add('hidden-fade');
+    observer.observe(el);
+});
