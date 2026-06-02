@@ -1,0 +1,192 @@
+/* --- 1. CSS Variables for 3 Theme Colors --- */
+:root {
+    /* 1. Light Mode (Default) - Using 6.png as requested */
+    --body-bg: linear-gradient(rgba(245, 247, 250, 0.85), rgba(195, 207, 226, 0.85)), url('../images/6.png');
+    --container-bg: #ffffff;
+    --text-color: #2d3436;
+    --text-muted: #636e72;
+    --primary-color: #0984e3;
+    --primary-hover: #74b9ff;
+    --card-border: #eeeeee;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Dark Mode */
+body.dark-mode {
+    --body-bg: linear-gradient(rgba(30, 30, 47, 0.9), rgba(21, 21, 32, 0.9)), url('../images/6.png');
+    --container-bg: #2a2a40;
+    --text-color: #f5f6fa;
+    --text-muted: #a4b0be;
+    --primary-color: #3742fa;
+    --primary-hover: #5352ed;
+    --card-border: #3b3b58;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* 3. Colorblind / High Contrast Mode (Requirement Met) */
+body.colorblind-mode {
+    --body-bg: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95)), url('../images/6.png');
+    --container-bg: #000000;
+    --text-color: #ffff00; /* High contrast yellow */
+    --text-muted: #ffcc00;
+    --primary-color: #00ffff; /* High contrast cyan */
+    --primary-hover: #ffffff;
+    --card-border: #ffff00;
+    --shadow-color: rgba(255, 255, 0, 0.3);
+}
+
+/* --- 2. Basic Typography & Reset --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--body-bg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Makes the background image stay in place while scrolling */
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease; 
+}
+
+/* --- 3. Top Navigation Bar --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--container-bg);
+    padding: 15px 40px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--card-border);
+    transition: all 0.5s ease;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.theme-btn {
+    background: var(--container-bg);
+    color: var(--text-color);
+    border: 2px solid var(--card-border);
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+}
+
+/* --- 4. Main Container --- */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 50px;
+    background: var(--container-bg);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px var(--shadow-color);
+    transition: background 0.5s ease;
+}
+
+header { text-align: center; margin-bottom: 40px; }
+h1 { font-size: 2.8em; margin-bottom: 10px; color: var(--primary-color); }
+h2 { color: var(--primary-color); border-bottom: 2px solid var(--card-border); padding-bottom: 10px; }
+.subtitle { font-size: 1.2em; color: var(--text-muted); font-weight: 500; }
+hr { border: 0; height: 1px; background: var(--card-border); margin: 40px 0; }
+
+/* --- 5. Responsive Card Grid Layout --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--container-bg);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    text-align: center;
+    border: 1px solid var(--card-border);
+}
+
+.card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px var(--shadow-color); }
+
+.image-container {
+    width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background-color: #000; 
+}
+
+.image-container img, .image-container video {
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+}
+
+.card:hover img, .card:hover video { transform: scale(1.15); }
+
+.card h3 { margin: 20px 0 5px; font-size: 1.2em; color: var(--text-color); }
+.card p { font-size: 0.95em; color: var(--text-muted); margin-bottom: 20px; }
+.card-link { color: var(--primary-color); text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+.card-link:hover { color: var(--primary-hover); text-decoration: underline; }
+
+/* --- 6. Footer & Interactive Buttons --- */
+footer {
+    text-align: center; margin-top: 60px; position: relative; min-height: 60px; 
+    display: flex; justify-content: center; align-items: center;
+}
+
+.primary-btn {
+    background-color: var(--primary-color); color: var(--container-bg); border: none;
+    padding: 16px 45px; border-radius: 50px; font-size: 1.1em; font-weight: bold;
+    cursor: pointer; transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover); transform: translateY(-3px) scale(1.05);
+}
+
+.bgm-btn {
+    position: absolute; left: 0; bottom: 5px; background: var(--container-bg);
+    border: 2px solid var(--card-border); color: var(--text-color); border-radius: 50%;
+    width: 50px; height: 50px; font-size: 1.4em; cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex; justify-content: center; align-items: center;
+}
+
+.bgm-btn:hover { transform: scale(1.15) rotate(-10deg); border-color: var(--primary-color); }
+
+/* --- 7. Image Modal (Lightbox) Styles --- */
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
+}
+.modal-content {
+    margin: auto; display: block; max-width: 80%; max-height: 80vh; margin-top: 5vh;
+    border-radius: 10px; animation: zoomIn 0.3s ease; 
+}
+#modalCaption {
+    margin: auto; display: block; width: 80%; text-align: center; color: #ccc;
+    padding: 15px 0; font-size: 1.2em; animation: zoomIn 0.3s ease;
+}
+.close-btn {
+    position: absolute; top: 30px; right: 40px; color: #f1f1f1; font-size: 40px;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.close-btn:hover { color: #ff4757; }
+@keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }

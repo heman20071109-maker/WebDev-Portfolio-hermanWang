@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Curtain | Herman Wang</title>
+    <link rel="stylesheet" href="styles/styles.css"> 
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="behind.html" class="active">Behind the Curtain</a>
+        </div>
+        <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1 id="main-title">Behind the Curtain</h1>
+            <p class="subtitle">My Web Development Journey & Reflection</p>
+        </header>
+        
+        <main>
+            <hr>
+            <section class="about">
+                <h2>1. Developer Tools & Code Screenshots</h2>
+                <p>Throughout the creation of this portfolio, <strong>VS Code</strong> and <strong>Chrome Developer Tools</strong> were my most essential companions. I heavily utilized the DevTools "Elements" panel to visually adjust the <code>cubic-bezier</code> animations and the Grid layout gaps in real time. The "Console" tab was also crucial for debugging my JavaScript, specifically when writing the array logic for the 3-way theme toggle and diagnosing missing source maps from third-party extensions.</p>
+                <div class="card-grid">
+                    <img src="images/code1.jpg" alt="Screenshot of VS Code Workspace" style="width: 100%; border-radius: 10px; border: 1px solid var(--card-border);">
+                    <img src="images/code2.jpg" alt="Screenshot of Chrome Developer Tools Debugging" style="width: 100%; border-radius: 10px; border: 1px solid var(--card-border);">
+                </div>
+            </section>
+
+            <hr>
+            <section class="about">
+                <h2>2. Final Reflection (Development Process)</h2>
+                <p>Building this personal portfolio has been a highly rewarding experience that allowed me to synthesize everything from the "Intro to Web Development" course. My primary goal was to transcend basic requirements and reach the "Extending" level by anticipating user needs and developing innovative solutions to complex coding challenges.</p>
+                
+                <p><strong>Applying Design Thinking & Challenges:</strong> To ensure exceptional user experience, I applied the Design Thinking process. During the <em>Empathize</em> and <em>Define</em> stages, I recognized that users have varying visual preferences and accessibility needs. This led me to the <em>Ideate</em> and <em>Prototype</em> phase, where I engineered a complex 3-color scheme system. The most significant challenge was implementing the <strong>Colorblind Mode</strong>. I had to write complex JavaScript array logic to cycle the button through three states (Light -> Dark -> Colorblind). In CSS, I utilized custom properties (<code>:root</code> variables) to seamlessly override colors and add a high-contrast dark overlay to the background image without breaking the layout.</p>
+                
+                <p><strong>Advanced Interactivity:</strong> Beyond the themes, I further challenged myself by writing advanced JavaScript for an interactive Lightbox image gallery and an integrated background music (BGM) toggle. I learned how to precisely manipulate the Document Object Model (DOM) and manage multiple event listeners simultaneously, ensuring smooth transitions without crashing the browser.</p>
+                
+                <p><strong>Conclusion:</strong> This journey deeply enhanced my understanding of how HTML semantics, CSS Flexbox/Grid, and complex JavaScript integrate. I successfully shifted my mindset from merely writing code to thinking like a true developer who prioritizes accessibility and user empathy. I am incredibly proud of the professional-grade functionalities in this portfolio.</p>
+            </section>
+        </main>
+    </div>
+    
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

@@ -4,83 +4,75 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Herman Wang | Portfolio</title>
-        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/styles.css">
     </head>
     <body>
-        <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="behind.html">Behind the Curtain</a>
+            </div>
+            <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+        </nav>
 
         <div class="container">
             <header>
                 <h1 id="main-title">Herman Wang</h1>
-                <p class="subtitle">Student & Web Developer</p>
+                <p class="subtitle">Student & Aspiring Web Developer</p>
             </header>
             
-            <section class="about">
-                <h2>About Me</h2>
-                <p>Hi, I'm Herman Wang, a student with a passion for web development and ice hockey. I love building interactive web experiences and enjoying the thrill of the ice rink.</p>
-            </section>
-            
-            <hr>
-            
-            <section class="projects">
-                <h2>Showcase</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="images/4.jpg" alt="Herman on the Ice" id="img1">
+            <main>
+                <section class="about">
+                    <h2>About Me</h2>
+                    <p>Hi, I'm Herman Wang. As a passionate student web developer, I enjoy translating creative ideas into interactive, responsive code. Beyond coding, I am an ice hockey player. The teamwork and fast-paced decision-making on the ice constantly inspire my logical thinking in software development.</p>
+                </section>
+                
+                <hr>
+                
+                <section class="projects">
+                    <h2>Showcase Collection</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="image-container"><img src="images/4.jpg" alt="Herman playing Ice Hockey on the rink" id="img1"></div>
+                            <h3>Sports</h3><p>Ice Hockey</p>
                         </div>
-                        <h3>Sports</h3>
-                        <p>Ice Hockey</p>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="images/3.jpg" alt="Shanghai Port Champions" id="img2">
+                        <div class="card">
+                            <div class="image-container"><img src="images/3.jpg" alt="Shanghai Port Champions lifting the trophy" id="img2"></div>
+                            <h3>Favorite Team</h3><p>Shanghai Port</p>
                         </div>
-                        <h3>Favorite Team</h3>
-                        <p>Shanghai Port</p>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <video src="images/2.mp4" autoplay loop muted playsinline id="vid1"></video>
+                        <div class="card">
+                            <div class="image-container"><video src="images/2.mp4" autoplay loop muted playsinline id="vid1"></video></div>
+                            <h3>Favorite Game</h3><p>Horizon</p>
                         </div>
-                        <h3>Favorite Game</h3>
-                        <p>Horizon</p>
-                    </div>
-                    <div class="card">
-                        <div class="image-container">
-                            <img src="images/1.jpg" alt="Rubik's Cube Speedcubing" id="img4">
+                        <div class="card">
+                            <div class="image-container"><img src="images/1.jpg" alt="Rubik's Cube Speedcubing" id="img4"></div>
+                            <h3>Hobby</h3><p><a href="https://cubing.com/results/person/2019WANX04" target="_blank" class="card-link">Rubik's Cube Results</a></p>
                         </div>
-                        <h3>Hobby</h3>
-                        <p><a href="https://cubing.com/results/person/2019WANX04" target="_blank" class="card-link">Rubik's Cube Results</a></p>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <hr>
-            <section class="about">
-                <h2>Design Thinking Process</h2>
-                <p>In building this portfolio, I applied the design thinking process. I empathized with users by understanding they might prefer a dark background for better reading. I ideated by sketching the layout, and prototyped this final version using HTML, CSS, and JS to ensure a clean and modern user experience.</p>
-            </section>
+                <hr>
+                <section class="about">
+                    <h2>Design Thinking Process</h2>
+                    <p>To build this portfolio, I strictly followed the Design Thinking framework. <strong>Empathize:</strong> I realized users view sites in different lighting conditions and some have visual impairments. <strong>Define:</strong> The problem was creating a universally readable UI. <strong>Ideate:</strong> I brainstormed a multi-theme concept. <strong>Prototype & Test:</strong> I built and refined a 3-way toggle (Light, Dark, and Colorblind mode) using CSS variables and JavaScript to ensure maximum readability for everyone.</p>
+                </section>
 
-            <hr>
-            <section class="about">
-                <h2>UN Global Goals</h2>
-                <p>I am passionate about <strong>Goal 3: Good Health and Well-being</strong>. Through my participation in Ice Hockey, I actively promote a healthy, energetic lifestyle and physical well-being, which is essential for our society's sustainable future.</p>
-            </section>
+                <hr>
+                <section class="about">
+                    <h2>UN Global Goals</h2>
+                    <p>I strongly advocate for <strong>Goal 3: Good Health and Well-being</strong>. Through my active participation in Ice Hockey, I promote physical fitness and mental resilience. I believe that a healthy lifestyle is the foundation of a sustainable society, and I aim to use my web development skills to spread awareness about youth sports.</p>
+                </section>
 
-            <hr>
-            <section class="about">
-                <h2>Accessibility Statement</h2>
-                <p>This website is designed with accessibility in mind. I used semantic HTML5 tags (like header, main, footer) for better screen reader navigation. All images include descriptive <code>alt</code> text, and my toggleable Dark Mode provides a high-contrast color scheme to reduce eye strain for visually sensitive users.</p>
-            </section>
+                <hr>
+                <section class="about">
+                    <h2>Accessibility Statement</h2>
+                    <p>This website prioritizes web accessibility (a11y). I implemented full semantic HTML5 tags (nav, main, section) to assist screen readers. All media elements have descriptive <code>alt</code> text. Most importantly, I engineered a three-color-scheme system featuring a high-contrast <strong>Colorblind Mode</strong> (yellow/cyan on black) to assist visually impaired users, alongside a Dark Mode to reduce eye strain.</p>
+                </section>
+            </main>
 
             <footer>
-                <audio id="bgmMusic" loop>
-                    <source src="audio/bgm.mp3" type="audio/mpeg">
-                </audio>
-
+                <audio id="bgmMusic" loop><source src="audio/bgm.mp3" type="audio/mpeg"></audio>
                 <button id="bgmToggleBtn" class="bgm-btn" title="Play/Pause Music">🔇</button>
-
                 <button id="magicButton" class="primary-btn">Say Hello!</button>
             </footer>
         </div>
@@ -91,6 +83,6 @@
             <div id="modalCaption"></div>
         </div>
 
-        <script src="scripts/script.js"></script>
+        <script src="scripts/scripts.js"></script>
     </body>
 </html>
