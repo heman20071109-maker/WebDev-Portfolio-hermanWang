@@ -33,6 +33,14 @@ body.colorblind-mode {
 }
 
 /* --- 2. Basic Typography & Reset --- */
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--body-bg);

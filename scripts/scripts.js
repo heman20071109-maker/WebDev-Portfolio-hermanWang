@@ -32,8 +32,11 @@ function applyTheme(theme) {
     // Keep the theme state when clicking nav links
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-        let baseHref = link.getAttribute('href').split('?')[0]; 
-        link.setAttribute('href', baseHref + '?theme=' + theme);
+        let href = link.getAttribute('href');
+        if (href && !href.startsWith('#')) {
+            let baseHref = href.split('?')[0]; 
+            link.setAttribute('href', baseHref + '?theme=' + theme);
+        }
     });
 }
 
