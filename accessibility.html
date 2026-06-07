@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accessibility | Herman Wang</title>
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="design.html">Design Thinking</a>
+                <a href="un-goals.html">UN Goals</a>
+                <a href="accessibility.html" class="active">Accessibility</a>
+                <a href="behind.html">Behind the Curtain</a>
+            </div>
+            <div class="nav-buttons">
+                <button id="fontToggleBtn" class="theme-btn">A Font: Medium</button>
+                <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <header>
+                <h1>Accessibility Statement</h1>
+                <p class="subtitle">Designing an inclusive web for everyone</p>
+            </header>
+            
+            <main>
+                <section class="about">
+                    <h2>1. High-Contrast Theme Engineering</h2>
+                    <p>I developed a unique three-way theme toggle. Alongside the standard Light and Dark modes, I specifically engineered a high-contrast <strong>Colorblind Mode</strong>. This mode utilizes vivid cyan and yellow text against a pure black background to assist users with varying degrees of color vision deficiency.</p>
+                </section>
+                <hr>
+                <section class="about">
+                    <h2>2. Semantic HTML & Screen Readers</h2>
+                    <p>A website must make sense even without its visual styling. I strictly utilized HTML5 semantic tags such as <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code>. This structural clarity allows assistive screen readers to accurately narrate the content hierarchy to visually impaired users.</p>
+                </section>
+                <hr>
+                <section class="about">
+                    <h2>3. Media Alternatives & Scalability</h2>
+                    <p>Every single image on this portfolio is accompanied by a descriptive <code>alt</code> text, and video elements utilize <code>aria-label</code> tags to provide context. Furthermore, I implemented a dynamic <strong>Font Size Toggle</strong>, empowering users to scale the typography to their comfort level without breaking the responsive grid layout.</p>
+                </section>
+            </main>
+        </div>
+
+        <img src="images/m.jpg" id="mouseFollower" alt="Mouse Follower">
+        <script src="scripts/scripts.js"></script>
+    </body>
+</html>

@@ -58,7 +58,6 @@ if (themeToggle) {
 }
 
 // --- 3. Image and Video Modal (Lightbox) Logic ---
-// 这里的代码改成了简单易懂的 if/else 逻辑
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImage");
 const modalVideo = document.getElementById("modalVideo");
@@ -117,5 +116,103 @@ if (bgmMusic && bgmToggleBtn) {
             bgmMusic.pause(); 
             bgmToggleBtn.innerText = "🔇"; 
         }
+    });
+}
+// --- 5. Splash Screen & Cool Moving Lines Animation ---
+const splashScreen = document.getElementById("splashScreen");
+const canvas = document.getElementById("splashCanvas");
+
+if (splashScreen && canvas) {
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    // Create lines/particles
+    for (let i = 0; i < 80; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 3, // Velocity X
+            vy: (Math.random() - 0.5) * 3, // Velocity Y
+            color: `hsl(${Math.random() * 360}, 100%, 50%)`
+        });
+    }
+
+    function animateLines() {
+        // Create a trailing effect by filling with low opacity black
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Bounce off edges
+            if (p.x <= 0 || p.x >= canvas.width) p.vx *= -1;
+            if (p.y <= 0 || p.y >= canvas.height) p.vy *= -1;
+
+            ctx.lineTo(p.x, p.y);
+            ctx.strokeStyle = p.color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        });
+
+        requestAnimationFrame(animateLines);
+    }
+    
+    animateLines();
+
+    // Click to enter the portfolio
+    splashScreen.addEventListener("click", () => {
+        splashScreen.style.opacity = "0";
+        setTimeout(() => {
+            splashScreen.style.visibility = "hidden";
+            splashScreen.style.display = "none";
+        }, 800); // Wait for transition to finish
+    });
+
+    // Resize canvas on window resize
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// --- 6. Font Size Toggle Logic ---
+const fontToggleBtn = document.getElementById("fontToggleBtn");
+const fontSizes = ['Medium', 'Large', 'Small'];
+let currentFontIndex = 0;
+
+if (fontToggleBtn) {
+    fontToggleBtn.addEventListener("click", () => {
+        currentFontIndex = (currentFontIndex + 1) % fontSizes.length;
+        let selectedSize = fontSizes[currentFontIndex];
+        
+        // Update Button Text
+        fontToggleBtn.innerText = `A Font: ${selectedSize}`;
+        
+        // Update Body Class for CSS Scaling
+        document.body.classList.remove('font-small', 'font-large');
+        if (selectedSize === 'Small') {
+            document.body.classList.add('font-small');
+        } else if (selectedSize === 'Large') {
+            document.body.classList.add('font-large');
+        }
+        // Medium is the default, so no class needed
+    });
+}
+
+// --- 7. Mouse Follower Image Logic ---
+const mouseFollower = document.getElementById("mouseFollower");
+
+if (mouseFollower) {
+    document.addEventListener("mousemove", (e) => {
+        // Set the image position exactly at the cursor coordinates
+        mouseFollower.style.left = e.clientX + "px";
+        mouseFollower.style.top = e.clientY + "px";
     });
 }

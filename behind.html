@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Behind the Curtain | Herman Wang</title>
-    <link rel="stylesheet" href="styles/styles.css"> 
-</head>
-<body>
-    <nav class="top-nav">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="behind.html" class="active">Behind the Curtain</a>
-        </div>
-        <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
-    </nav>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Behind the Curtain | Herman Wang</title>
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="design.html">Design Thinking</a>
+                <a href="un-goals.html">UN Goals</a>
+                <a href="accessibility.html">Accessibility</a>
+                <a href="behind.html" class="active">Behind the Curtain</a>
+            </div>
+            <div class="nav-buttons">
+                <button id="fontToggleBtn" class="theme-btn">A Font: Medium</button>
+                <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+            </div>
+        </nav>
 
-    <div class="container">
-        <header>
-            <h1 id="main-title">Behind the Curtain</h1>
-            <p class="subtitle">My Web Development Journey</p>
-        </header>
-        
-        <main>
-            <hr>
-            <section class="about">
-                <h2>1. Developer Tools & Code Screenshots</h2>
-                <p>Throughout the creation of this portfolio, <strong>VS Code</strong> was my sole developer tool and absolute essential companion. I heavily utilized its built-in features to write my HTML, CSS, and JavaScript. The Live Server extension was crucial for instantly viewing my visual changes, and the built-in error highlighting helped me quickly find syntax mistakes. When I was trying to figure out why my Lightbox modal was not working, I relied entirely on VS Code to carefully trace my logic.</p>
-                <div class="card-grid">
-                    <img src="images/code1.jpg" alt="Screenshot of VS Code HTML and CSS Workspace" style="width: 100%; border-radius: 10px; border: 1px solid var(--card-border);">
-                    <img src="images/code2.jpg" alt="Screenshot of VS Code JavaScript Logic" style="width: 100%; border-radius: 10px; border: 1px solid var(--card-border);">
-                </div>
-            </section>
-
-            <hr>
-            <section class="about">
-                <h2>2. Explanation of Challenges</h2>
-                <p><strong>Design Challenges:</strong> To ensure an excellent user experience, I recognized that users have varying visual preferences and accessibility needs. I challenged myself to build a 3-color scheme system using CSS variables. Creating the <strong>Colorblind Mode</strong> was tough, but I managed to use JavaScript to update the class name on the body tag so the colors would dynamically change. I also made sure to add aria-label tags to my video so screen readers can understand it.</p>
+        <div class="container">
+            <header>
+                <h1>Behind the Curtain</h1>
+                <p class="subtitle">My Web Development Journey & Reflections</p>
+            </header>
+            
+            <main>
+                <section class="about projects">
+                    <h2>1. Developer Tools & Code Screenshots</h2>
+                    <p>Throughout the development process, I heavily relied on VS Code and Browser Developer Tools to inspect elements, debug JavaScript, and perfect the CSS layout. Below is a 10-picture gallery documenting my coding logic (Click to enlarge).</p>
+                    
+                    <div class="card-grid">
+                        <div class="card"><div class="image-container"><img src="images/code1.jpg" alt="Semantic HTML Structure"></div><p>1. Semantic HTML</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code2.jpg" alt="CSS Variables Setup"></div><p>2. CSS Variables Setup</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code3.jpg" alt="JS Theme Toggle Logic"></div><p>3. Theme Toggle Logic</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code4.jpg" alt="Lightbox Modal Code"></div><p>4. Lightbox Modal Code</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code5.jpg" alt="Responsive Grid CSS"></div><p>5. Responsive Grid</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code6.jpg" alt="Font Size Scaling"></div><p>6. Font Size Scaling</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code7.jpg" alt="Canvas Animation JS"></div><p>7. Canvas Animation</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code8.jpg" alt="URL Search Params Routing"></div><p>8. URLSearchParams</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code9.jpg" alt="Audio Control Logic"></div><p>9. Audio Control</p></div>
+                        <div class="card"><div class="image-container"><img src="images/code10.jpg" alt="Elements Panel Debugging"></div><p>10. Elements Debugging</p></div>
+                    </div>
+                </section>
                 
-                <p><strong>JavaScript Challenges:</strong> The biggest technical challenge I faced was with my Lightbox feature. Initially, my JavaScript only selected images. When I clicked my Horizon gameplay video, nothing happened! It was a frustrating bug. I realized I needed to select videos. I updated my code to use an if/else statement checking the tag name. If the clicked element is a video, it hides the modal image and shows the modal video instead, and even automatically plays it. </p>
-            </section>
+                <hr>
+                
+                <section class="about">
+                    <h2>2. Explanation of Challenges</h2>
+                    <p><strong>The Cross-Page Theme Bug:</strong> The absolute biggest headache of this project was getting the JavaScript to remember the user's theme choice when navigating between different pages. Originally, I tried using `localStorage`, but browser security blocked it since I was opening files locally. My solution was to use the `URLSearchParams` API to dynamically pass the theme in the URL. It took hours of debugging, but it worked flawlessly!</p>
+                    <p><strong>Z-Index and Canvas Animation:</strong> Adding the splash screen animation was tricky. The canvas lines were either covering the UI text or disappearing completely. I had to strictly manage my CSS `z-index` properties to ensure the animation stayed behind the text but above the main webpage until clicked.</p>
+                </section>
 
-            <hr>
-            <section class="about">
-                <h2>3. Learning Takeaways</h2>
-                <p>This journey deeply enhanced my understanding of how HTML structure, CSS Flexbox and Grid layouts, and JavaScript interactivity connect. By building everything from scratch, I successfully shifted my mindset from merely following instructions to thinking like a true developer who prioritizes accessibility, performance, and user empathy. I am very proud of the extra features I built into this project, and it proved to me that I can build complex websites just using VS Code.</p>
-            </section>
-        </main>
-    </div>
-    
-    <script src="scripts/scripts.js"></script>
-</body>
+                <hr>
+                
+                <section class="about">
+                    <h2>3. Learning Takeaways</h2>
+                    <p>Looking back, the coolest part of this project wasn't just writing the code, but learning how to fix it when it broke. Using Chrome Developer Tools to inspect my own DOM and tracking down syntax errors in the Console made me feel like an actual web developer. I realized that coding is 20% writing and 80% debugging. I am incredibly proud of the advanced functionalities I integrated into this Extending-level portfolio.</p>
+                </section>
+            </main>
+        </div>
+
+        <img src="images/m.jpg" id="mouseFollower" alt="Mouse Follower">
+        <div id="imageModal" class="modal">
+            <span class="close-btn">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <video class="modal-content" id="modalVideo" controls style="display: none;"></video>
+            <div id="modalCaption"></div>
+        </div>
+
+        <script src="scripts/scripts.js"></script>
+    </body>
 </html>
